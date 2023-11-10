@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <math.h>
+
+// Function declarations
+double add(double a, double b);
+double subtract(double a, double b);
+double multiply(double a, double b);
+double divide(double a, double b);
+double squareRoot(double num);
+double power(double base, double exponent);
+
+int main() {
+    double num1, num2, result;
+    int choice;
+
+    // Menu
+    printf("Simple Scientific Calculator\n");
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("5. Square Root\n");
+    printf("6. Exponentiation\n");
+    printf("Enter your choice (1-6): ");
+    scanf("%d", &choice);
+
+    // Input numbers
+    printf("Enter two numbers: ");
+    scanf("%lf %lf", &num1, &num2);
+
+    // Perform calculation based on user's choice
+    switch (choice) {
+        case 1:
+            result = add(num1, num2);
+            break;
+        case 2:
+            result = subtract(num1, num2);
+            break;
+        case 3:
+            result = multiply(num1, num2);
+            break;
+        case 4:
+            result = divide(num1, num2);
+            break;
+        case 5:
+            result = squareRoot(num1);
+            break;
+        case 6:
+            result = power(num1, num2);
+            break;
+        default:
+            printf("Invalid choice\n");
+            return 1; // Exit with an error code
+    }
+
+    // Display the result
+    printf("Result: %lf\n", result);
+
+    return 0;
+}
+
+// Function definitions
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+double divide(double a, double b) {
+    if (b != 0) {
+        return a / b;
+    } else {
+        printf("Error: Division by zero\n");
+        return 0; // You might want to handle this case more gracefully
+    }
+}
+
+double squareRoot(double num) {
+    if (num >= 0) {
+        return sqrt(num);
+    } else {
+        printf("Error: Cannot calculate square root of a negative number\n");
+        return 0; // You might want to handle this case more gracefully
+    }
+}
+
+double power(double base, double exponent) {
+    return pow(base, exponent);
+}
+
